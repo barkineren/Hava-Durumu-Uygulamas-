@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hava Durumu Uygulaması</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="weather-bg" class="weather-bg"></canvas>
+
+  <div class="app">
+    <header class="app__header">
+      <div class="app__header-top">
+        <h1>Hava Durumu</h1>
+        <button id="unit-toggle" class="unit-toggle" type="button" aria-label="Sıcaklık birimini değiştir">
+          <span class="unit-toggle__option unit-toggle__option--active" data-unit="C">°C</span>
+          <span class="unit-toggle__option" data-unit="F">°F</span>
+        </button>
+      </div>
+      <form id="search-form" class="search-form" autocomplete="off">
+        <input
+          type="text"
+          id="city-input"
+          class="search-form__input"
+          placeholder="Şehir ara... (örn. İstanbul)"
+          required
+        />
+        <button type="submit" class="search-form__button">Ara</button>
+      </form>
+      <ul id="suggestions" class="suggestions hidden"></ul>
+    </header>
+
+    <main id="content" class="content">
+      <div id="status" class="status">
+        <p>Bir şehir aratarak başlayın veya konumunuzu kullanın.</p>
+        <button id="locate-btn" class="locate-btn">📍 Konumumu Kullan</button>
+      </div>
+
+      <section id="current-weather" class="current-weather hidden">
+        <div class="current-weather__main">
+          <div>
+            <h2 id="city-name" class="city-name"></h2>
+            <p id="current-date" class="current-date"></p>
+          </div>
+          <div class="current-weather__temp">
+            <span id="weather-icon" class="weather-icon"></span>
+            <span id="current-temp" class="current-temp"></span>
+          </div>
+        </div>
+        <p id="weather-desc" class="weather-desc"></p>
+
+        <div class="details-grid">
+          <div class="detail-card">
+            <span class="detail-card__label">Hissedilen</span>
+            <span id="feels-like" class="detail-card__value"></span>
+          </div>
+          <div class="detail-card">
+            <span class="detail-card__label">Nem</span>
+            <span id="humidity" class="detail-card__value"></span>
+          </div>
+          <div class="detail-card">
+            <span class="detail-card__label">Rüzgar</span>
+            <span id="wind" class="detail-card__value"></span>
+          </div>
+          <div class="detail-card">
+            <span class="detail-card__label">UV Endeksi</span>
+            <span id="uv-index" class="detail-card__value"></span>
+          </div>
+        </div>
+      </section>
+
+      <section id="forecast" class="forecast hidden">
+        <h3>5 Günlük Tahmin</h3>
+        <div id="forecast-list" class="forecast-list"></div>
+      </section>
+    </main>
+
+    <footer class="app__footer">
+      <p>Veri kaynağı: <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </footer>
+  </div>
+
+  <script src="weather-effects.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
